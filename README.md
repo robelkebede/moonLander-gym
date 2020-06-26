@@ -1,2 +1,2 @@
-# moonLander openai-gyn
+# moonLander openai-gym
 

@@ -5,7 +5,12 @@ import torch
 import numpy as np
 from collections import deque
 import matplotlib.pyplot as plt
-from moonLander-gym.dqn.agent import Agent
+import sys
+import os
+path = os.getcwd()
+lib_dir = os.path.abspath(os.path.join(path, os.pardir))
+sys.path.insert(1,lib_dir) 
+from dqn.agent import Agent
 
 env = gym.make('LunarLander-v2')
 env.seed(0)

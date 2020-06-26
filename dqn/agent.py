@@ -70,7 +70,6 @@ class Agent():
         states, actions, rewards, next_states, dones = experiences
 
         # predictied Q value
-        print(dones)
         Q_targets_next = self.qnetwork_target(next_states).detach().max(1)[0].unsqueeze(1)
         # Compute Q targets for current states 
         Q_targets = rewards + (gamma * Q_targets_next * (1 - dones))

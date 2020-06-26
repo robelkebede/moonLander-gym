@@ -1,12 +1,16 @@
 import numpy as np
 import gym
 import torch
-from dqn.agent import Agent
+import os
+import sys
+path = os.getcwd()
+lib_dir = os.path.abspath(os.path.join(path, os.pardir))
+sys.path.insert(1,lib_dir) 
 
+from dqn.agent import Agent
 
 ENV_NAME = 'LunarLander-v2'
 #ENV_NAME = 'Humanoid-v2'
-
 
 # Get the environment and extract the number of actions.
 env = gym.make(ENV_NAME)
@@ -20,8 +24,7 @@ agent.qnetwork_local.load_state_dict(torch.load('checkpoint.pth'))
 for i in range(15):
     state = env.reset()
     for j in range(200):
-        #action = agent.act(state)
-        action = np.random.randint(0,6)
+        action = agent.act(state)
         env.render()
         state, reward, done, _ = env.step(action)
         if done:
